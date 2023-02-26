@@ -1,0 +1,25 @@
+.l-section{
+    padding: 5rem 3rem;
+    position: relative;
+    z-index: 1;
+
+    @include tablet{
+        padding: 8rem 3rem;
+    }
+}
+
+.l-section--fullHeight{
+    height: 100%;
+
+}
+
+.l-section__title{
+    margin-bottom: 2rem;
+}
+
+.l-section--center{
+
+    .l-section__title{
+        text-align: center;
+    }
+}

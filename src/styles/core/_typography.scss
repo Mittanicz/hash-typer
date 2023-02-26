@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+
+    &:before,
+    &:after{
+        box-sizing: border-box;
+    }
+}
+
+@font-face{
+    font-family: 'Rajdhani';
+    src: url('../assets/fonts/Rajdhani-Regular.woff2') format('woff2');
+}
+
+@font-face{
+    font-family: 'Rajdhani Bold';
+    src: url('../assets/fonts/Rajdhani-Bold.woff2') format('woff2');
+}
+
+html{
+    font-size: 62.5%;
+
+    @include desktop{
+        font-size: 70.5%;
+    }
+}
+
+.l-body{
+    color: var(--fontColor);
+    font-family: 'Rajdhani', 'Arial', 'Helvetica', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+
+    @include desktop{
+        font-size: 1.8rem;
+        line-height: 1.8;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong{
+    font-family: 'Rajdhani Bold', 'Arial', 'Helvetica', sans-serif;
+}
+
+h1,
+h2{
+    color: var(--fontColor);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+
+    @include desktop{
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+}
+
+h2{
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+
+    @include desktop{
+        font-size: 2.3rem;
+    }
+}
+
+h3{
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+
+    @include desktop{
+        font-size: 2rem;
+    }
+}
+
+
+p{
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+
+    @include desktop{
+        font-size: 1.8rem;
+    }
+
+    @include widescreen{
+        font-size: 1.8rem;
+    }
+}
+
+a,
+.link{
+    color: var(--fontColor);
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active{
+        color: var(--fontColor);
+        text-decoration: none;
+    }
+}
+
+img{
+    max-width: 100%;
+}
+
+small{
+    font-size: 1rem;
+
+    @include desktop{
+        font-size: 1.2rem;
+    }
+
+    @include widescreen{
+        font-size: 1.4rem;
+    }
+}
+
+ul{
+    list-style: disc;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    text-align: left;
+}
+
+li{
+    margin-bottom: 1rem;
+}

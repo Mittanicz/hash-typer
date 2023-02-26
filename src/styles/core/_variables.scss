@@ -1,0 +1,82 @@
+// Responsive settings
+// ------------------
+$mobile: 579px;
+$tablet: 768px;
+$desktop: 1024px;
+$widescreen: 1280px;
+
+$trueWhite: #fff;
+$white: #f6f6f6;
+$black: #0d0d0d;
+
+$fontColor: #6abbcf;
+$borderColor: #00e6ff;
+
+
+$transition: all .3s ease-out;
+
+
+$themes: (
+    sky: (
+        'primaryColor': #5EF6FF,
+        'primaryColor-10': #00e6ff1a,
+        'primaryColor-30': #00e6ff4d,
+        'primaryColor-50': #5ef6ff80,
+        'primaryColor-80': #5ef6ffcc,
+        'backgroundColor': #0E0E17,
+        'backgroundColor-30': #09121c4d,
+        'backgroundColor-80': #0e0e17cc,
+        'progressBarColor': #5ef6ff80,
+        'progressBarColor-line': #00e6ff4d,
+        'black': #202020,
+        'backdropColor': #00000073,
+        'fontColor': #66f7f9,
+        'borderColor': #00e6ff,
+        'errorColor': #ea3943,
+        'errorBackgroundColor': #b2222233,
+        'successColor': #16c784,
+        'successBackgroundColor': #16C78433,
+        'warningColor': #ffae00,
+        'WarningBackgroundColor': #ffae0033,
+        'white': #fff,
+        'disabledColor': #cfd6e4,
+        'borderRadius': .8rem,
+        'fontSizeLarge': 1.4rem,
+        'animation': '.3s all ease-out',
+    ),
+    cyber: (
+        'primaryColor': #F75049,
+        'primaryColor-10': #f750491a,
+        'primaryColor-30': #f750494d,
+        'primaryColor-50': #f7504980,
+        'primaryColor-80': #f75049cc,
+        'backgroundColor': #0E0E17,
+        'backgroundColor-30': #09121c4d,
+        'backgroundColor-80': #0e0e17cc,
+        'progressBarColor': #2e161a,
+        'progressBarColor-line': #f7514b,
+        'black': #202020,
+        'backdropColor': #00000073,
+        'fontColor': #b1d8f1,
+        'borderColor': #F75049,
+        'errorColor': #ea3943,
+        'errorBackgroundColor': #b2222233,
+        'successColor': #16c784,
+        'successBackgroundColor': #16C78433,
+        'warningColor': #ffae00,
+        'WarningBackgroundColor': #ffae0033,
+        'white': #fff,
+        'disabledColor': #cfd6e4,
+        'borderRadius': .8rem,
+        'fontSizeLarge': 1.4rem,
+        'animation': '.3s all ease-out',
+    )
+);
+
+@each $name, $map in $themes {
+    .theme-#{$name} {
+        @each $key, $value in $map {
+            --#{$key}: #{$value};
+        }
+    }
+} 

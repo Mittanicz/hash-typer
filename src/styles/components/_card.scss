@@ -1,0 +1,58 @@
+.c-card{
+    display: flex;
+    flex: 1;
+    gap: .2rem;
+    justify-content: center;
+}
+
+.c-card__bracket{
+    background: var(--primaryColor-30);
+    min-width: 3rem;
+
+    --aug-bl: 10px;
+    --aug-tl: 5px;
+    --aug-r: 3px;
+    --aug-r-extend1: 60%;
+    --aug-tl1-width: 5px;
+
+}
+
+.c-card__line{
+    border-color: var(--primaryColor-10);
+    box-shadow: 0 0 15px 3px var(--primaryColor-10), 0 -15px 25px 0 var(--primaryColor-10);
+    margin: 0 0 1rem;
+
+}
+
+.c-card__header{
+    padding: 1rem;
+}
+
+.c-card__img{
+    fill: var(--primaryColor);
+    max-width: 100%;
+}
+
+.c-card__content{
+    background: var(--backgroundColor-30);
+    padding: 1rem;
+    width: 100%;
+
+    @include tablet{
+        padding: 3rem;
+    }
+}
+
+.c-card__footer{
+    padding: 1rem 0;
+
+    .c-button{
+        width: 100%;
+    }
+}
+
+.c-card__title{
+    margin-bottom: 0;
+    padding: .5rem .5rem .5rem 0;
+    text-transform: uppercase;
+}

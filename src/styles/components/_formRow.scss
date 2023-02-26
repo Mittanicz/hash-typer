@@ -1,0 +1,11 @@
+.c-formRow{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.c-formRow__validation{
+    color: var(--errorColor);
+    padding: .5rem .5rem .5rem 2rem;
+}

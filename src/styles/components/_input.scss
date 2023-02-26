@@ -1,0 +1,56 @@
+.c-input{
+    background: var(--backgroundColor-30);
+    border: none;
+    color: var(--primaryColor);
+    font-size: 1.4rem;
+    height: 5rem;
+    padding: 2rem 2rem 1rem;
+    width: 100%;
+
+    .is-error &{
+        background: var(--errorBackgroundColor);
+    }
+
+    &:active,
+    &:focus{
+        background: var(--backgroundColor);
+        color: var(--primaryColor);
+    }
+}
+
+input{
+
+    &:-internal-autofill-previewed{
+        background: #07263285 !important;
+        border: none !important;
+        box-shadow: 0 0 0 1000px #000 inset;
+        color: var(--fontColor) !important;
+        -webkit-text-fill-color: var(--fontColor) !important;
+    }
+
+    &:-internal-autofill-selected{
+        background: #07263285 !important;
+        border: none !important;
+        box-shadow: 0 0 0 1000px #000 inset;
+        color: var(--fontColor) !important;
+        -webkit-text-fill-color: var(--fontColor) !important;
+    }
+
+    &:-webkit-autofil{
+        background: #07263285 !important;
+        border: none !important;
+        box-shadow: 0 0 0 1000px #000 inset;
+        color: var(--fontColor) !important;
+        -webkit-text-fill-color: var(--fontColor) !important;
+
+        &:hover,
+        &:focus,
+        &:active{
+            background: #07263285 !important;
+            border: none !important;
+            box-shadow: 0 0 0 1000px #000 inset;
+            color: var(--fontColor) !important;
+            -webkit-text-fill-color: var(--fontColor) !important;
+        }
+    }
+}

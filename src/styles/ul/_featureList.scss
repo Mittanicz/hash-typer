@@ -1,0 +1,18 @@
+.ul-featuresList__item{
+    display: flex;
+}
+
+.ul-featuresList__icon{
+    align-items: center;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    margin-right: 2rem;
+    width: 3rem;
+
+    svg{
+        fill: var(--primaryColor);
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}

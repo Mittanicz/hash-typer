@@ -1,0 +1,53 @@
+.l-app{
+    background: url('../assets/images/gridBg.webp') repeat center top,url('../assets/images/noise.webp') repeat top;
+    background-size: auto,auto,100%,auto;
+    color: var(--fontColor);
+    height: 100vh;
+
+    &:before{
+        background: linear-gradient(360deg, rgb(0 0 0 / 30%) 58%, rgb(94 246 255 / 10%) 100%);
+        bottom: 0;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    &:after{
+        background-image: url('../assets/images/line-bg.webp');
+        bottom: 0;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+}
+
+.l-appLobby{
+    padding: 1rem 1rem 5rem;
+
+    .l-main{
+        margin: 0 auto;
+    }
+}
+
+.l-appPage{
+    padding: 5rem 1rem;
+}
+
+.l-appGame{
+    height: 100%;
+    padding: 5rem 0 5.8rem;
+
+    .l-main{
+        background: var(--secondaryBackgroundColor);
+        height: 83.8vh;
+        margin: 0;
+        overflow-y: scroll;
+        padding: 1rem 1rem 5rem;
+    }
+}

@@ -1,0 +1,358 @@
+@use 'sass:math';
+
+$gap: 1rem;
+$gap-sm: $gap - .5rem;
+$gap-md: $gap + .5rem;
+$gap-lg: $gap + 1rem;
+
+$gridColCount: 12 !default;
+$gridName: l-grid !default;
+$gridColName: l-col !default;
+$gridAttributeName: class !default;
+$gridGutter: $gap-lg !default;
+$gridFutterVertical: $gridGutter !default;
+// calculate width of one col in %
+$gl-colUnit: math.div(100%, $gridColCount);
+
+// calculate and store nth portions for grid by columns
+$gl-colPortions: (0: 0);
+
+@for $i from 1 through $gridColCount{
+	$gl-colPortions: map-merge($gl-colPortions, ($i: $gl-colUnit * $i))
+}
+
+// calculate and store nth fractions for grid by number
+$gl-colFractions: (0: 0);
+
+@for $i from 1 through $gridColCount{
+	$fraction: math.div(1, $i);
+	$gl-colFractions: map-merge($gl-colFractions, ($fraction: $fraction * 100%));
+}
+
+;
+
+// Make the breakpoints
+// =bp($breakpoint)
+// 	$query: map-get($gl-mq-list, $breakpoint)
+// 	@if $query != null
+// 		@media ($gl-mq-width: #{nth($query, 1)})
+// 			@content
+// Function to generate the grid by number
+@mixin makeGridByNumber($grid){
+	@for $i from 1 through $gridColCount{
+		[#{$gridAttributeName}*='#{$grid}-#{$i}'] > [#{$gridAttributeName}~='#{$gridColName}'],
+		[#{$gridAttributeName}*='#{$grid}-#{$i}'] > [#{$gridAttributeName}*='#{$gridColName}-'],
+		[#{$gridAttributeName}*='#{$grid}-#{$i}'] > [#{$gridAttributeName}*='#{$gridColName}_']{
+			$fraction: math.div(1, $i);
+			flex-basis: map-get($gl-colFractions, $fraction);
+			max-width: map-get($gl-colFractions, $fraction);
+		}
+	}
+
+}
+
+// Function to generate the grid by columns
+@mixin makeCol($col){
+	[#{$gridAttributeName}~='#{$gridName}'],
+	[#{$gridAttributeName}*='#{$gridName}-'],
+	[#{$gridAttributeName}*='#{$gridName}_']{
+		@for $i from 1 through $gridColCount{
+			> [#{$gridAttributeName}*='#{$col}-#{$i}']{
+				flex-basis: map-get($gl-colPortions, $i);
+				max-width: map-get($gl-colPortions, $i);
+			}
+		}
+	}
+
+}
+
+// Function to generate the -first & -last base on mq keys (as _lg-first)
+@mixin makeFirstLast($mq){
+	[#{$gridAttributeName}~='#{$gridName}'],
+	[#{$gridAttributeName}*='#{$gridName}-'],
+	[#{$gridAttributeName}*='#{$gridName}_']
+	[#{$gridAttributeName}*='#{$mq}-first']{
+		order: -1
+	}
+
+	[#{$gridAttributeName}*='#{$mq}-last']{
+		order: 1
+	}
+
+}
+
+// Function to generate the offset
+@mixin makeOff($off){
+	[#{$gridAttributeName}~='#{$gridName}'],
+	[#{$gridAttributeName}*='#{$gridName}-'],
+	[#{$gridAttributeName}*='#{$gridName}_']{
+		@for $i from 0 through $gridColCount - 1{
+			> [data-push-left*='#{$off}-#{$i}']{
+				margin-left: map-get($gl-colPortions, $i)
+			}
+		}
+	}
+
+	[#{$gridAttributeName}~='#{$gridName}'],
+	[#{$gridAttributeName}*='#{$gridName}-'],
+	[#{$gridAttributeName}*='#{$gridName}_']{
+		@for $i from 0 through $gridColCount - 1{
+			> [data-push-right*='#{$off}-#{$i}']{
+				margin-right: map-get($gl-colPortions, $i);
+			}
+		}
+	}
+}
+
+
+//************************
+//    CLASSES
+//************************
+// GRID
+[#{$gridAttributeName}~='#{$gridName}'],
+[#{$gridAttributeName}*='#{$gridName}-'],
+[#{$gridAttributeName}*='#{$gridName}_']{
+	flex-flow: row wrap;
+	margin: 0;
+	display: flex;
+}
+
+// COLS
+[#{$gridAttributeName}~='#{$gridColName}'],
+[#{$gridAttributeName}*='#{$gridColName}-'],
+[#{$gridAttributeName}*='#{$gridColName}_']{
+	padding: 0 math.div($gridGutter, 2) $gridFutterVertical;
+	max-width: 100%;
+}
+
+// JUST "COL" & "COL_"
+[#{$gridAttributeName}~='#{$gridColName}'],
+[#{$gridAttributeName}*='#{$gridColName}_']{
+	flex: 1 1 0%;
+}
+
+// JUST "COL-"
+[#{$gridAttributeName}*='#{$gridColName}-']{
+	flex: none;
+}
+
+// COL & GRID
+[#{$gridAttributeName}~='#{$gridName}'][#{$gridAttributeName}~='#{$gridColName}'],
+[#{$gridAttributeName}~='#{$gridName}'][#{$gridAttributeName}*='#{$gridColName}-'],
+[#{$gridAttributeName}~='#{$gridName}'][#{$gridAttributeName}*='#{$gridColName}_'],
+[#{$gridAttributeName}*='#{$gridName}-'][#{$gridAttributeName}~='#{$gridColName}'],
+[#{$gridAttributeName}*='#{$gridName}-'][#{$gridAttributeName}*='#{$gridColName}-'],
+[#{$gridAttributeName}*='#{$gridName}-'][#{$gridAttributeName}*='#{$gridColName}_'],
+[#{$gridAttributeName}*='#{$gridName}_'][#{$gridAttributeName}~='#{$gridColName}'],
+[#{$gridAttributeName}*='#{$gridName}_'][#{$gridAttributeName}*='#{$gridColName}-'],
+[#{$gridAttributeName}*='#{$gridName}_'][#{$gridAttributeName}*='#{$gridColName}_']{
+	margin: 0;
+	padding: 0;
+}
+
+//************************
+//    HELPERS SUFFIXES
+//************************
+// FOR GRID
+[#{$gridAttributeName}*='#{$gridName}-']{
+	// No spacing between cols : noGutter
+	&[#{$gridAttributeName}*='-noGutter']{
+		margin: 0;
+
+		> [#{$gridAttributeName}~='#{$gridColName}'],
+		> [#{$gridAttributeName}*='#{$gridColName}-']{
+			padding: 0;
+		}
+	}
+
+	// No Wrapping
+	&[#{$gridAttributeName}*='-noWrap']{
+		flex-wrap: nowrap;
+	}
+
+	// Horizontal alignment on center
+	&[#{$gridAttributeName}*='-center']{
+		justify-content: center
+	}
+
+	// Horizontal alignment on right
+	&[#{$gridAttributeName}*='-right']{
+		justify-content: flex-end;
+		align-self: flex-end;
+		margin-left: auto;
+	}
+
+	// Vertical alignment on top
+	&[#{$gridAttributeName}*='-top']{
+		align-items: flex-start;
+	}
+
+	// Vertical alignment on middle
+	&[#{$gridAttributeName}*='-middle']{
+		align-items: center;
+	}
+
+	// Vertical alignment on bottom
+	&[#{$gridAttributeName}*='-bottom']{
+		align-items: flex-end;
+	}
+
+	// Orders
+	&[#{$gridAttributeName}*='-reverse']{
+		flex-direction: row-reverse
+	}
+
+	&[#{$gridAttributeName}*='-column']{
+		flex-direction: column;
+
+		> [#{$gridAttributeName}*='#{$gridColName}-']{
+			flex-basis: auto
+		}
+	}
+
+	&[#{$gridAttributeName}*='-column-reverse']{
+		flex-direction: column-reverse;
+	}
+
+	// Spaces between and around cols
+	&[#{$gridAttributeName}*='-spaceBetween']{
+		justify-content: space-between;
+	}
+
+	&[#{$gridAttributeName}*='-spaceAround']{
+		justify-content: space-around;
+	}
+
+	// Equal heights columns
+	&[#{$gridAttributeName}*='-equalHeight'] > [#{$gridAttributeName}~='#{$gridColName}'],
+	&[#{$gridAttributeName}*='-equalHeight'] > [#{$gridAttributeName}*='#{$gridColName}-'],
+	&[#{$gridAttributeName}*='-equalHeight'] > [#{$gridAttributeName}*='#{$gridColName}_']{
+		align-self: stretch;
+
+		> *{
+			height: 100%;
+		}
+	}
+
+	// Removes the padding-bottom
+	&[#{$gridAttributeName}*='-noBottom'] > [#{$gridAttributeName}~='#{$gridColName}'],
+	&[#{$gridAttributeName}*='-noBottom'] > [#{$gridAttributeName}*='#{$gridColName}-'],
+	&[#{$gridAttributeName}*='-noBottom'] > [#{$gridAttributeName}*='#{$gridColName}_']{
+		padding-bottom: 0;
+	}
+}
+
+// FOR COL
+[#{$gridAttributeName}*='#{$gridColName}-']{
+	&[#{$gridAttributeName}*='-top']{
+		align-self: flex-start;
+	}
+
+	&[#{$gridAttributeName}*='-middle']{
+		align-self: center;
+	}
+
+	&[#{$gridAttributeName}*='-bottom']{
+		align-self: flex-end;
+	}
+
+	&[#{$gridAttributeName}*='-first']{
+		order: -1;
+	}
+
+	&[#{$gridAttributeName}*='-last']{
+		order: 1;
+	}
+}
+
+//************************
+//    GRID BY NUMBER
+//************************
+$widescreen: 1600px;
+
+@include makeGridByNumber(#{$gridName});
+
+@include desktop-max{
+	@include makeGridByNumber(_lg);
+}
+
+@include tablet-max{
+	@include makeGridByNumber(_md);
+}
+
+@include mobile-max{
+	@include makeGridByNumber(_sm);
+}
+
+@include to-mobile{
+	@include makeGridByNumber(_xs);
+}
+
+// @each $mq-key, $mq-value in $gl-mq-list
+//   +bp(#{$mq-key})
+//     //@media #{$mq-value} {
+//     +makeGridByNumber(_#{$mq-key})
+//************************
+//    COLS SIZES
+//************************
+@include makeCol(#{$gridColName});
+
+@include makeOff(off);
+
+@include desktop-max{
+	@include makeCol(_lg);
+	@include makeOff(_lg);
+}
+
+@include tablet-max{
+	@include makeCol(_md);
+	@include makeOff(_md);
+}
+
+@include mobile-max{
+	@include makeCol(_sm);
+	@include makeOff(_sm);
+}
+
+@include to-mobile{
+	@include makeCol(_xs);
+	@include makeOff(_xs);
+}
+
+// @each $mq-key, $mq-value in $gl-mq-list
+//   +bp(#{$mq-key})
+//     +makeCol(_#{$mq-key})
+//     +makeOff(_#{$mq-key})
+//     +makeFirstLast(_#{$mq-key})
+//************************
+//    HIDING COLS
+//************************
+// @each $mq-key, $mq-value in $gl-mq-list
+//   +bp(#{$mq-key})
+//     [#{$gridAttributeName}*="#{$mq-key}-hidden"]
+//       display: none
+@include desktop-max{
+	[class*='lg-hidden']{
+		display: none
+	}
+}
+
+@include tablet-max{
+	[class*='md-hidden']{
+		display: none
+	}
+}
+
+@include mobile-max{
+	[class*='sm-hidden']{
+		display: none
+	}
+}
+
+@include to-mobile{
+	[class*='xs-hidden']{
+		display: none
+	}
+}
+
+/* stylelint-enable */

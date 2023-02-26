@@ -1,0 +1,38 @@
+.l-header{
+    background: var(--backgroundColor);
+    border-bottom: 1px solid var(--borderColor);
+    height: 5rem;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+.l-header__nav{
+    align-items: center;
+    display: flex;
+    height: 100%;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.l-header__link{
+    color: var(--fontColor);
+    padding: 1rem;
+    text-decoration: none;
+
+    &:hover,
+    &:focus{
+        color: var(--fontColor);
+    }
+}
+
+.l-header__navRight{
+    flex: 1;
+    text-align: right;
+}
+
+.l-header__navLeft{
+    flex: 1;
+}

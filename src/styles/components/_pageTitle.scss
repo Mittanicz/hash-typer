@@ -1,0 +1,25 @@
+.c-pageTitle{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.c-pageTitle__title{
+    flex: 1 3 100%;
+    margin-bottom: 0;
+    text-align: center;
+    z-index: 5;
+
+    @include tablet{
+        flex: 1 5 100%;
+    }
+}
+
+.c-pageTitle__line{
+    background: var(--primaryColor);
+    height: 2px;
+    width: 40%;
+}

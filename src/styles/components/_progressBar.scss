@@ -1,0 +1,22 @@
+.c-progressBar{
+    display: flex;
+    gap: .5rem;
+}
+
+.c-progressBar__column{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.c-progressBar__progress{
+    background: var(--primaryColor-50);
+    height: .5rem;
+    margin-bottom: .7rem;
+}
+
+.c-progressBar__text{
+    color: var(--primaryColor);
+    font-size: 1rem;
+    text-align: center;
+}

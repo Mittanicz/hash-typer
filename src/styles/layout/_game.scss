@@ -1,0 +1,10 @@
+.l-game{
+    padding: 5rem 1rem;
+    position: relative;
+    z-index: 100;
+
+    @include tablet{
+        margin: 0 auto;
+        max-width: 600px;
+    }
+}

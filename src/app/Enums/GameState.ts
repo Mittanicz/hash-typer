@@ -1,0 +1,9 @@
+enum GameState {
+    GAME_INIT ='GAME_INIT',
+    GAME_START ='GAME_START',
+    GAME_END_FAIL ='GAME_END_FAIL',
+    GAME_END_WIN ='GAME_END_WIN',
+    GAME_IN_PROGRESS ='GAME_IN_PROGRESS',
+}
+
+export default GameState;
