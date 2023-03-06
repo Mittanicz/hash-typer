@@ -1,11 +1,11 @@
 .l-app{
-    background: url('../assets/images/gridBg.webp') repeat center top,url('../assets/images/noise.webp') repeat top;
+    background: var(--appBgGrid) repeat center top,url('../assets/images/noise.webp') repeat top;
     background-size: auto,auto,100%,auto;
     color: var(--fontColor);
     height: 100vh;
 
     &:before{
-        background: linear-gradient(360deg, rgb(0 0 0 / 30%) 58%, rgb(94 246 255 / 10%) 100%);
+        background: var(--appBgGridBefore);
         bottom: 0;
         content: '';
         left: 0;
@@ -16,7 +16,7 @@
     }
 
     &:after{
-        background-image: url('../assets/images/line-bg.webp');
+        background-image: var(--appBgLine);
         bottom: 0;
         content: '';
         left: 0;
