@@ -1,5 +1,8 @@
 <template>
-    <header class="l-gameHeader" data-augmented-ui="border">
+    <header
+        class="l-gameHeader"
+        data-augmented-ui="border"
+    >
         <section class="l-gameHeader__content">
             <div>
                 {{ $t('l.common-score-with-placeholder', [currentScore]) }}

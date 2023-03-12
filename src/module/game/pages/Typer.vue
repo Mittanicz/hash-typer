@@ -1,7 +1,9 @@
-
 <template>
     <game-layout>
-        <section v-if="gameState === GameState.GAME_END_FAIL" class="l-grid-center">
+        <section
+            v-if="gameState === GameState.GAME_END_FAIL"
+            class="l-grid-center"
+        >
             <h-card :title="$t(`l.pg-typer-game-over-title-${gameOverTitleIndex}`)">
                 <template #content>
                     {{ $t(`l.pg-typer-game-over-${gameOverTextIndex}`) }}
@@ -13,7 +15,10 @@
                 </template>
             </h-card>
         </section>
-        <section v-else-if="gameState === GameState.GAME_END_WIN" class="l-grid-center">
+        <section
+            v-else-if="gameState === GameState.GAME_END_WIN"
+            class="l-grid-center"
+        >
             <h-card :title="$t(`l.pg-typer-game-over-title-${gameWinTitleIndex}`)">
                 <template #content>
                     {{ $t(`l.pg-typer-game-over-${gameWinTextIndex}`) }}
@@ -29,7 +34,10 @@
             <h2 class="u-text-center">
                 {{ currentWord }}
             </h2>
-            <div class="u-text-center" v-if="gameState !== GameState.GAME_IN_PROGRESS">
+            <div
+                class="u-text-center"
+                v-if="gameState !== GameState.GAME_IN_PROGRESS"
+            >
                 {{ $t('l.pg-typer-type-start') }}
             </div>
             <h-input

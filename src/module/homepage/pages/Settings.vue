@@ -33,7 +33,7 @@ import HSelect from '@/components/Select';
 import HSection from '@/components/Section';
 import { useI18n } from "vue-i18n";
 import { useRouter } from 'vue-router';
-import Themes from "@/app/Common/Themes";
+import Themes from "@/app/common/Themes";
 import Languages from "@/translations/Languages";
 import UserStore from "@/services/UserStore";
 import {onMounted, ref} from "vue";

@@ -3,8 +3,8 @@
         :data-cy="id"
         :class="buttonClasses"
         data-augmented-ui="tr-clip-x br-clip border border"
-        @click="onClick"
         :type="type"
+        @click="onClick"
     >
         <slot />
     </button>

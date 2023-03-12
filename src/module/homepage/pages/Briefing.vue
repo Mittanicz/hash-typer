@@ -1,4 +1,3 @@
-
 <template>
     <main-layout>
         <h-section full-height>

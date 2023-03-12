@@ -1,4 +1,3 @@
-
 <template>
     <main-layout>
         <h-section full-height>
@@ -11,13 +10,22 @@
             </div>
             <h-card>
                 <template #content>
-                    <h-button class="u-mb-20" @click="routeToGame">
+                    <h-button
+                        class="u-mb-20"
+                        @click="routeToGame"
+                    >
                         {{ $t('l.common-play') }}
                     </h-button>
-                    <h-button class="u-mb-20" @click="routeToSettings">
+                    <h-button
+                        class="u-mb-20"
+                        @click="routeToSettings"
+                    >
                         {{ $t('l.common-settings') }}
                     </h-button>
-                    <h-button class="u-mb-20" @click="routeToHighScores">
+                    <h-button
+                        class="u-mb-20"
+                        @click="routeToHighScores"
+                    >
                         {{ $t('l.common-highscores') }}
                     </h-button>
                 </template>

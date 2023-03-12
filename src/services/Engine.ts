@@ -24,7 +24,7 @@ class Engine {
 
     private setGameStages(randomTotalScore: number): void {
         const scoreLevel = Math.round(randomTotalScore / 4);
-        for (let i = 1; i < 5; i++) {
+        for (let i: number = 1; i < 5; i++) {
             GameStoreService.addGameStage({
                 scoreLevel: scoreLevel * i,
                 stageNumber: i,

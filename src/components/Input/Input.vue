@@ -5,8 +5,8 @@
                 class="c-input"
                 :type="type"
                 :value="modelValue"
-                :name="name"
                 @input="onInput"
+                :name="name"
             >
         </div>
     </div>

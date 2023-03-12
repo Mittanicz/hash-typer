@@ -14,25 +14,37 @@
                 <hr class="c-card__line">
                 <ul class="ul-featuresList">
                     <li class="ul-featuresList__item">
-                        <div class="ul-featuresList__icon" data-augmented-ui="all-hex border">
+                        <div
+                            class="ul-featuresList__icon"
+                            data-augmented-ui="all-hex border"
+                        >
                             <h-icon :name="Icons.SCORE" />
                         </div>
                         {{ $t('l.pg-score-score', [finalScore.score]) }}
                     </li>
                     <li class="ul-featuresList__item">
-                        <div class="ul-featuresList__icon" data-augmented-ui="all-hex border">
+                        <div
+                            class="ul-featuresList__icon"
+                            data-augmented-ui="all-hex border"
+                        >
                             <h-icon :name="Icons.CHART" />
                         </div>
                         {{ $t('l.pg-score-word-count', [finalScore.wordCount]) }}
                     </li>
                     <li class="ul-featuresList__item">
-                        <div class="ul-featuresList__icon" data-augmented-ui="all-hex border">
+                        <div
+                            class="ul-featuresList__icon"
+                            data-augmented-ui="all-hex border"
+                        >
                             <h-icon :name="Icons.CLOCK" />
                         </div>
                         {{ $t('l.pg-score-time-elapsed', [elapsedTime]) }}
                     </li>
                     <li class="ul-featuresList__item">
-                        <div class="ul-featuresList__icon" data-augmented-ui="all-hex border">
+                        <div
+                            class="ul-featuresList__icon"
+                            data-augmented-ui="all-hex border"
+                        >
                             <h-icon :name="Icons.STOPWATCH" />
                         </div>
                         {{ $t('l.pg-score-word-per-second', [calculateWPS]) }}

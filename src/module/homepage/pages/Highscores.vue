@@ -8,29 +8,47 @@
                 </h1>
                 <div class="c-pageTitle__line" />
             </div>
-            <table v-if="hasScores" class="c-table">
+            <table
+                v-if="hasScores"
+                class="c-table"
+            >
                 <thead>
                     <tr>
                         <td class="c-table__head">
-                            <h-icon class="c-icon-primary" :name="Icons.SCORE" />
+                            <h-icon
+                                class="c-icon-primary"
+                                :name="Icons.SCORE"
+                            />
                             {{ $t('l.pg-highscores-table-score') }}
                         </td>
                         <td class="c-table__head">
-                            <h-icon class="c-icon-primary" :name="Icons.CHART" />
+                            <h-icon
+                                class="c-icon-primary"
+                                :name="Icons.CHART"
+                            />
                             {{ $t('l.pg-highscores-table-wordCount') }}
                         </td>
                         <td class="c-table__head">
-                            <h-icon class="c-icon-primary" :name="Icons.CLOCK" />
+                            <h-icon
+                                class="c-icon-primary"
+                                :name="Icons.CLOCK"
+                            />
                             {{ $t('l.pg-highscores-table-timeElapsed') }}
                         </td>
                         <td class="c-table__head">
-                            <h-icon class="c-icon-primary" :name="Icons.STOPWATCH" />
+                            <h-icon
+                                class="c-icon-primary"
+                                :name="Icons.STOPWATCH"
+                            />
                             {{ $t('l.pg-highscores-table-wordsPerSeconds') }}
                         </td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(score, index) in state.scores" :key="index">
+                    <tr
+                        v-for="(score, index) in state.scores"
+                        :key="index"
+                    >
                         <td>
                             {{ score.score }}
                         </td>
@@ -64,7 +82,10 @@
                     </div>
                 </template>
             </h-card>
-            <h-button v-if="hasScores" @click="routeToHome">
+            <h-button
+                v-if="hasScores"
+                @click="routeToHome"
+            >
                 {{ $t('l.common-back') }}
             </h-button>
         </h-section>

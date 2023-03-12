@@ -1,6 +1,9 @@
 <template>
     <div class="c-formRow">
-        <label :for="name" class="c-label">
+        <label
+            :for="name"
+            class="c-label"
+        >
             {{ label }}
         </label>
         <select
