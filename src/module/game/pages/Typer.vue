@@ -36,9 +36,9 @@
             </h2>
             <div
                 class="u-text-center"
-                v-if="gameState !== GameState.GAME_IN_PROGRESS"
+                v-if="GameStoreService.getCurrentWord() === 'start'"
             >
-                {{ $t('l.pg-typer-type-start') }}
+                {{ $t('l.pg-typer-start') }}
             </div>
             <h-input
                 v-model="hashValue"

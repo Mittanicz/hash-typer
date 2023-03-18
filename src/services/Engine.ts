@@ -118,7 +118,6 @@ class Engine {
 
     private getRandomWord(): string {
         let word: string = '';
-        console.log(GameStoreService.getCurrentGameStage());
         switch (GameStoreService.getCurrentGameStage()) {
         case 1:
             return WordService.getRandomWordInRange(4,4);
